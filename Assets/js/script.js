@@ -1,37 +1,47 @@
 // Assignment code here
-var generateBtn = document.querySelector("#generate");
-var passwordLength;
-var confirmLower;
-var confirmUpper;
-var confirmNumber;
-var confirmSpecial;
+function generatePassword(){
+  // Password length
+  var length = Number(prompt('How many characters in your password? Choose between 8 and 128'));
+  while (isNaN(length) || length < 8 || length > 128){
+    length = Number(prompt("Length must be 8-128 characters. How many characters would you like your password to be?"));
+  } 
 
-const randomFunc ={
-  lower: getRandomLower,
-  upper: getRandomUpper,
-  number: getRandomNumber,
-  Symbol: getRandomSymbol
+  // Password criteria
+  var numbers = confirm("Do you want to contain numbers?");
+  var uppers = confirm("Do you want to contain upper case letters?");
+  var lowers = confirm("Do you want to contain lower case letters?");
+  var symbols = confirm("Do you want to contain contain special characters?");
+
+  while (!numbers && !uppers && !lowers && !symbols) {
+    alert("You must choose a criteria!");
+    numbers = confirm("Do you want to contain numbers?");
+    uppers = confirm("Do you want to contain upper case letters?");
+    lowers = confirm("Do you want to contain lower case letters?");
+    symbols = confirm("Do you want to contain contain special characters?");
+  }
+
+  console.log(" Passworkd length is " + length);
+  console.log(" Number " + numbers );
+  console.log(" Lower case " + uppers );
+  console.log(" Upper case " + lowers);
+  console.log(" Special Character " + symbols);
+
+  var password = "";
+
+  var allowed = {};
+  if (uppers) password += rando(allowed.uppers = "QWERTYUIOPASDFGHJKLZXCVBNM");
+  if (lowers) password += rando(allowed.lowers = "qwertyuiopasdfghjklzxcvbnm");
+  if (numbers) password += rando(allowed.numbers = "1234567890");
+  if (symbols) password += rando(allowed.symbols = "!@#$%^&*(){}[]=<>/,.");
+
+  for (var i = password.length; i < length; i++) {
+    password += rando(rando(allowed).value);
+  }
+
+  password = randoSequence(password).join("");
+  console.log("Your Pasword is: " + password);
+  return password;
 }
-
-// Generate function - http://www.net-comber.com/charset.html
-function getRandomLower() {
-  return String.fromCharCode(Math.floor(Math.random()*26)+97);
-}
-
-function getRandomUpper() {
-  return String.fromCharCode(Math.floor(Math.random()*26)+65);
-}
-
-function getRandomNumber() {
-  return String.fromCharCode(Math.floor(Math.random()*10)+48);
-}
-
-function getRandomSymbol() {
- const symbols = '~`!@#$%^&*()_-+={[}]|\:;<,>.?/';
- return symbols[Math.floor(Math.random()* symbols.length)];
-}
-
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -47,50 +57,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-//Start questions
-function generatePassword() {
-  passwordLength =prompt('How many characters in your password? Choose between 8 and 128');
-  console.log('Passworkd length is' + passwordLength);
-  
-  if(isNaN(passwordLength)){
-    alert('Please enter a number');
-    return generatePassword(); 
-  }
-  else if(!passwordLength){
-    alert('Please enter a valid password length');
-    return generatePassword();  
-  }
-  else if (passwordLength < 8 || passwordLength > 128){
-    alert('Please enter a valid password length');
-    return generatePassword(); 
-  }
-  else{
-    confirmNumber = confirm("Do you want to contain numbers?");
-    console.log(" Number " + confirmNumber);
-    confirmLower = confirm("Do you want to contain lower case letters?");
-    console.log(" Lower case " + confirmLower);
-    confirmUpper = confirm("Do you want to contain upper case letters?");
-    console.log(" Upper case " + confirmUpper);
-    confirmSpecial = confirm("Do you want to contain contain special characters?");
-    console.log(" Special Character " + confirmSpecial);
-  };
-
-  //No answers
-  if (!confirmLower && !confirmUpper && !confirmNumber && !confirmSpecial) {
-    showPassword = alert("You must choose a criteria!");   
-  }
-  //4 ture
-  else if (confirmLower && confirmUpper && confirmNumber && confirmSpecial){
-    
-  }
-  
-
-
-
-
-
-
-}
-
 
