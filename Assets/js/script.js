@@ -27,11 +27,10 @@ function generatePassword(){
   console.log(" Special Character " + symbols);
 
   var password = "";
-
   var allowed = {};
+  if (numbers) password += rando(allowed.numbers = "1234567890");
   if (uppers) password += rando(allowed.uppers = "QWERTYUIOPASDFGHJKLZXCVBNM");
   if (lowers) password += rando(allowed.lowers = "qwertyuiopasdfghjklzxcvbnm");
-  if (numbers) password += rando(allowed.numbers = "1234567890");
   if (symbols) password += rando(allowed.symbols = "!@#$%^&*(){}[]=<>/,.");
 
   for (var i = password.length; i < length; i++) {
@@ -50,9 +49,7 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
