@@ -36,9 +36,9 @@ The following image demonstrates the application functionality:
 
 ![An app window with the label Password Generator, an input field labeled Your Secure Password, and a Generate Password button.](./Assets/img/Password%20Generator.png)
 
-# 💡💡💡Finished work
-* [The Link of the deployed application.]( https://zwind66.github.io/Shuai-s-Assignment-3/)
+## 💡💡💡Finished work
 
+* [The Link of the deployed application.]( https://zwind66.github.io/Shuai-s-Assignment-3/)
 
 * [The Link of the GitHub repository.]( https://github.com/zwind66/Shuai-s-Assignment-3.git)
 
